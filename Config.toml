@@ -1,0 +1,17 @@
+[choreo.authz_service.config]
+# Service configs
+grpcApiPort = 9090
+
+# Keto configs
+ketoReadPort = 4466
+ketoWritePort = 4467
+ketoHostnameRead = "localhost"
+ketoHostnameWrite = "localhost"
+ketoGrpcScheme = "grpc"
+ketoHttpScheme = "http"
+
+# Permissions
+projectPermissions = ["view", "manage"]
+
+[ballerina.log]
+level = "DEBUG"

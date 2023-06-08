@@ -1,0 +1,117 @@
+// Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+// This software is the property of WSO2 LLC. and its suppliers, if any.
+// Dissemination of any information or reproduction of any material contained
+// herein in any form is strictly forbidden, unless permitted by WSO2 expressly.
+// You may not alter or remove any copyright or other notice from copies of this content.
+
+syntax = "proto3";
+
+package authz.choreo.apis;
+
+service ChoreoAuthorization {
+    rpc GetAuthorizedProjectList(GetAuthorizedProjectListRequest) returns (GetAuthorizedProjectListResponse) {}
+    rpc GetAuthorizedProject(GetAuthorizedProjectRequest) returns (GetAuthorizedProjectResponse){}
+    rpc IsAllowedCreateProjects(IsAllowedCreateProjectsRequest) returns (IsAllowedCreateProjectsResponse){}
+    rpc IsAllowedUpdateProject(IsAllowedUpdateProjectRequest) returns (IsAllowedUpdateProjectResponse){}
+    rpc IsAllowedPatchProject(IsAllowedPatchProjectRequest) returns (IsAllowedPatchProjectResponse){}
+    rpc IsAllowedDeleteProject(IsAllowedDeleteProjectRequest) returns (IsAllowedDeleteProjectResponse){}
+    rpc GetProjectShareInformation(GetProjectShareInformationRequest) returns (GetProjectShareInformationResponse){}
+    rpc UpdateProjectPermissions(UpdateProjectPermissionsRequest) returns (UpdateProjectPermissionsResponse){}
+}
+
+message GetAuthorizedProjectListRequest {
+    repeated string project_uuids = 1;
+    repeated Role roles = 2;
+    string org_uuid = 3;
+}
+
+message GetAuthorizedProjectListResponse {
+    repeated Project projects = 1;
+}
+
+message GetAuthorizedProjectRequest {
+    string project_uuid = 1;
+    repeated Role roles = 2;
+    string org_uuid = 3;
+}
+
+message GetAuthorizedProjectResponse {
+    bool authorized = 1;
+    string project_uuid = 2;
+    repeated string permissions = 3;
+}
+
+message IsAllowedCreateProjectsRequest {
+    repeated Role roles = 1;
+    string org_uuid = 2;
+}
+
+message IsAllowedCreateProjectsResponse {
+    bool allowed = 1;
+}
+
+message IsAllowedUpdateProjectRequest {
+    string project_uuid = 1;
+    repeated Role roles = 2;
+    string org_uuid = 3;
+}
+
+message IsAllowedUpdateProjectResponse {
+    bool allowed = 1;
+}
+
+message IsAllowedPatchProjectRequest {
+    string project_uuid = 1;
+    repeated Role roles = 2;
+    string org_uuid = 3;
+}
+
+message IsAllowedPatchProjectResponse {
+    bool allowed = 1;
+}
+
+message IsAllowedDeleteProjectRequest {
+    string project_uuid = 1;
+    repeated Role roles = 2;
+    string org_uuid = 3;
+}
+
+message IsAllowedDeleteProjectResponse {
+    bool allowed = 1;
+}
+
+message GetProjectShareInformationRequest {
+    string project_uuid = 1;
+    string org_uuid = 2;
+}
+
+message GetProjectShareInformationResponse {
+    string project_uuid = 1;
+    repeated RolePermissions role_permissions = 2;
+}
+
+message UpdateProjectPermissionsRequest {
+    string project_uuid = 1;
+    repeated Role editor_roles = 2;
+    repeated Role new_roles = 3;
+    repeated string new_permissions = 4;
+    string org_uuid = 5;
+}
+
+message UpdateProjectPermissionsResponse {
+    string project_uuid = 1;
+    repeated RolePermissions role_permissions = 2;
+}
+
+message Project {
+    string project_uuid = 1;
+}
+
+message Role {
+    string role_uuid = 1;
+}
+
+message RolePermissions {
+    Role role = 1;
+    repeated string permissions = 2;
+}
