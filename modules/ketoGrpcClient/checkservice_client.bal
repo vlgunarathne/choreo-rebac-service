@@ -1,5 +1,5 @@
-import authz_service.constants;
-import authz_service.config;
+import resource_authz_service.constants;
+import resource_authz_service.config;
 
 // CheckServiceClient checkServiceClient = check new ("http://localhost:4466");
 CheckServiceClient checkServiceClient = check new (config:ketoHttpScheme+"://"+config:ketoHostnameRead+":"+config:ketoReadPort.toString());

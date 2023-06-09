@@ -257,7 +257,7 @@ modules = [
 
 [[package]]
 org = "choreo"
-name = "authz_service"
+name = "resource_authz_service"
 version = "0.1.0"
 dependencies = [
 	{org = "ballerina", name = "grpc"},
@@ -266,10 +266,10 @@ dependencies = [
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "choreo", packageName = "authz_service", moduleName = "authz_service"},
-	{org = "choreo", packageName = "authz_service", moduleName = "authz_service.authz"},
-	{org = "choreo", packageName = "authz_service", moduleName = "authz_service.config"},
-	{org = "choreo", packageName = "authz_service", moduleName = "authz_service.constants"},
-	{org = "choreo", packageName = "authz_service", moduleName = "authz_service.ketoGrpcClient"}
+	{org = "choreo", packageName = "resource_authz_service", moduleName = "resource_authz_service"},
+	{org = "choreo", packageName = "resource_authz_service", moduleName = "resource_authz_service.authz"},
+	{org = "choreo", packageName = "resource_authz_service", moduleName = "resource_authz_service.config"},
+	{org = "choreo", packageName = "resource_authz_service", moduleName = "resource_authz_service.constants"},
+	{org = "choreo", packageName = "resource_authz_service", moduleName = "resource_authz_service.ketoGrpcClient"}
 ]
 

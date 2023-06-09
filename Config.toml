@@ -1,4 +1,4 @@
-[choreo.authz_service.config]
+[choreo.resource_authz_service.config]
 # Service configs
 grpcApiPort = 9090
 

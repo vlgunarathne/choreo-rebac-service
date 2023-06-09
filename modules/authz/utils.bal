@@ -1,4 +1,4 @@
-import authz_service.config;
+import resource_authz_service.config;
 public function getProjectPermissions() returns string[] {
     return config:projectPermissions;
 }

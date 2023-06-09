@@ -1,6 +1,6 @@
 [package]
 org = "choreo"
-name = "authz_service"
+name = "resource_authz_service"
 version = "0.1.0"
 distribution = "2201.5.0"
 

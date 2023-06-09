@@ -1,6 +1,6 @@
 import ballerina/grpc;
-import authz_service.authz;
-import authz_service.config;
+import resource_authz_service.authz;
+import resource_authz_service.config;
 
 listener grpc:Listener ep = new (config:grpcApiPort);
 
