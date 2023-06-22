@@ -83,6 +83,7 @@ message IsAllowedDeleteProjectResponse {
 message GetProjectShareInformationRequest {
     string project_uuid = 1;
     string org_uuid = 2;
+    repeated Role editor_roles = 3;
 }
 
 message GetProjectShareInformationResponse {

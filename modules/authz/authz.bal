@@ -259,7 +259,7 @@ public function IsAllowedPatchProject(ContextIsAllowedPatchProjectRequest reques
 }
 
 public function IsAllowedDeleteProject(ContextIsAllowedDeleteProjectRequest request) returns IsAllowedDeleteProjectResponse|error {
-        var {project_uuid, roles, org_uuid} = request.content;
+    var {project_uuid, roles, org_uuid} = request.content;
     if org_uuid == "" {
         string err = "Organization UUID cannot be empty";
         log:printError(err);
@@ -318,6 +318,25 @@ public function IsAllowedDeleteProject(ContextIsAllowedDeleteProjectRequest requ
 }
 
 public function GetProjectShareInformation(ContextGetProjectShareInformationRequest request) returns GetProjectShareInformationResponse|error {
+    var {project_uuid, org_uuid, editor_roles} = request.content;
+    if org_uuid == "" {
+        string err = "Organization UUID cannot be empty";
+        log:printError(err);
+        return error grpc:InvalidArgumentError(err);
+    }
+
+    if project_uuid == "" {
+        string err = "Organization [" + org_uuid + "] : Project UUID cannot be empty";
+        log:printError(err);
+        return error grpc:InvalidArgumentError(err);
+    }
+
+    if editor_roles.length() <= 0 {
+        string err = "Organization [" + org_uuid + "] : User role list cannot be empty";
+        log:printError(err);
+        return error grpc:InvalidArgumentError(err);
+    }
+    
     return error("");
 }
 
